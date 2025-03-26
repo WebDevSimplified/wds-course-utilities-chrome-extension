@@ -1,6 +1,8 @@
 MIT License
 
-Copyright (c) 2018 Tomofumi Chiba
+Copyright (c) 2025 Kyle Cook
+
+This software includes portions of code from Chrome Extension TypeScript Starter, originally licensed under the MIT License by Tomofumi Chiba (Copyright (c) 2018).
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

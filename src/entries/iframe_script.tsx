@@ -3,7 +3,7 @@ import {
   getVideoPreferences,
   storeVideoPreferences,
   VideoPreferences,
-} from "../storage"
+} from "@/lib/storage"
 
 async function main() {
   const video = document.querySelector("video")
@@ -137,9 +137,3 @@ function getCaptionsButton(): Promise<HTMLButtonElement> {
 chrome.runtime.sendMessage({ type: "register", scriptType: "iframe" })
 
 main()
-
-// chrome.runtime.onMessage.addListener(function (request) {
-//   if (request && request.type === "page-changed") {
-//     main()
-//   }
-// })

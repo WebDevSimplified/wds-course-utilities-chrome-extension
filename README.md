@@ -1,4 +1,4 @@
-# Chrome Extension TypeScript Starter
+# Web Dev Simplified Course Utilities
 
 ![build](https://github.com/chibat/chrome-extension-typescript-starter/workflows/build/badge.svg)
 

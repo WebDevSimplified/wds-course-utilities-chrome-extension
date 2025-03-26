@@ -1,14 +1,17 @@
 {
   "manifest_version": 3,
 
-  "name": "Chrome Extension TypeScript Starter",
-  "description": "Chrome Extension, TypeScript, Visual Studio Code",
+  "name": "Web Dev Simplified Course Utilities",
+  "description": "Utilities for Web Dev Simplified's course website to make the viewing experience better",
   "version": "1.0",
-  "options_ui": {
-    "page": "options.html"
-  },
   "action": {
-    "default_icon": "icon.png",
+    "default_icon": {
+      "16": "logos/logo-16.png",
+      "32": "logos/logo-32.png",
+      "48": "logos/logo-48.png",
+      "64": "logos/logo-64.png",
+      "128": "logos/logo-128.png"
+    },
     "default_popup": "popup.html"
   },
   "content_scripts": [
@@ -26,5 +29,11 @@
     "service_worker": "js/background.js"
   },
   "permissions": ["storage"],
-  "host_permissions": ["https://courses.webdevsimplified.com/view/courses/*"]
+  "icons": {
+    "16": "logos/logo-16.png",
+    "32": "logos/logo-32.png",
+    "48": "logos/logo-48.png",
+    "64": "logos/logo-64.png",
+    "128": "logos/logo-128.png"
+  }
 }
