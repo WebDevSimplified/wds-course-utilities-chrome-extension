@@ -1,4 +1,5 @@
 import {
+  getOptions,
   getVideoPreferences,
   storeVideoPreferences,
   VideoPreferences,
@@ -12,6 +13,13 @@ async function main() {
   const storedPreferences = await getVideoPreferences()
   setDefaultValues(storedPreferences, video)
   listenForChanges(storedPreferences, video)
+
+  const options = await getOptions()
+  if (options.autoplay) video.play()
+
+  video.addEventListener("ended", () => {
+    chrome.runtime.sendMessage({ type: "video-ended", to: "content" })
+  })
 }
 
 function setDefaultValues(
@@ -45,6 +53,7 @@ async function listenForChanges(
   storedPreferences: VideoPreferences,
   video: HTMLVideoElement
 ) {
+  let rateChangeTimeout: NodeJS.Timeout
   video.addEventListener("ratechange", async () => {
     if (
       storedPreferences.playbackRate === video.playbackRate ||
@@ -53,9 +62,14 @@ async function listenForChanges(
       return
     }
     storedPreferences.playbackRate = video.playbackRate
-    return await storeVideoPreferences(storedPreferences)
+
+    if (rateChangeTimeout) clearTimeout(rateChangeTimeout)
+    rateChangeTimeout = setTimeout(() => {
+      storeVideoPreferences(storedPreferences)
+    }, 100)
   })
 
+  let volumeChangeTimeout: NodeJS.Timeout
   video.addEventListener("volumechange", async () => {
     if (
       storedPreferences.volume === video.volume &&
@@ -65,7 +79,10 @@ async function listenForChanges(
     }
     storedPreferences.volume = video.volume
     storedPreferences.muted = video.muted
-    return await storeVideoPreferences(storedPreferences)
+    if (volumeChangeTimeout) clearTimeout(volumeChangeTimeout)
+    volumeChangeTimeout = setTimeout(() => {
+      storeVideoPreferences(storedPreferences)
+    }, 100)
   })
 
   try {
@@ -117,10 +134,12 @@ function getCaptionsButton(): Promise<HTMLButtonElement> {
   })
 }
 
+chrome.runtime.sendMessage({ type: "register", scriptType: "iframe" })
+
 main()
 
-chrome.runtime.onMessage.addListener(function (request) {
-  if (request && request.type === "page-changed") {
-    main()
-  }
-})
+// chrome.runtime.onMessage.addListener(function (request) {
+//   if (request && request.type === "page-changed") {
+//     main()
+//   }
+// })

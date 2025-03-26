@@ -30,10 +30,18 @@ module.exports = {
         use: "ts-loader",
         exclude: /node_modules/,
       },
+      {
+        test: /\.s?css$/,
+        use: ["style-loader", "css-loader", "postcss-loader"],
+        exclude: /\.module\.s?(c|a)ss$/,
+      },
     ],
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
+    alias: {
+      "@": srcDir,
+    },
   },
   plugins: [
     new CopyPlugin({
