@@ -1,71 +1,25 @@
 # Web Dev Simplified Course Utilities
 
-![build](https://github.com/chibat/chrome-extension-typescript-starter/workflows/build/badge.svg)
+This is a chrome extension that adds a few quality of life features to the Web Dev Simplified course website.
 
-Chrome Extension, TypeScript and Visual Studio Code
+## Features
 
-## Prerequisites
+Here is a list of the current features for this extension. If you think any features should be added, please open an issue or a pull request.
 
-- [node + npm](https://nodejs.org/) (Current Version)
+### Video Player Enhancements
 
-## Option
+This extension saves your video settings between videos and site visits so you don't need to manually set them each time. Below is a list of all the settings that are saved:
 
-- [Visual Studio Code](https://code.visualstudio.com/)
+- Playback Speed
+- Volume
+- Subtitles
 
-## Includes the following
+Unfortunately, video quality settings are not saved by this extension as Cloudflare (the video player host) does not provide an API to change video quality settings programmatically. Cloudflare does claim to remember the ideal video quality for you between videos, though.
 
-- TypeScript
-- Webpack
-- React
-- Jest
-- Example Code
-  - Chrome Storage
-  - Options Version 2
-  - content script
-  - count up badge number
-  - background
+### Autoplay Next Video
 
-## Project Structure
+If you click on the extension in your toolbar you can enable the autoplay feature. This will automatically play the next video in the course when the current video ends. You can also change the delay between the current video ending and the next video starting to any value between 0 and 10 seconds.
 
-- src/typescript: TypeScript source files
-- src/assets: static files
-- dist: Chrome Extension directory
-- dist/js: Generated JavaScript files
+## Contributing
 
-## Setup
-
-```
-npm install
-```
-
-## Import as Visual Studio Code project
-
-...
-
-## Build
-
-```
-npm run build
-```
-
-## Build in watch mode
-
-### terminal
-
-```
-npm run watch
-```
-
-### Visual Studio Code
-
-Run watch mode.
-
-type `Ctrl + Shift + B`
-
-## Load extension to chrome
-
-Load `dist` directory
-
-## Test
-
-`npx jest` or `npm run test`
+If you have any features, bug reports, or other contributions you would like to make to this extension, please open an issue or a pull request. Be as detailed as you can when opening an issue for a bug report or feature request as that will make it quicker for me to implement the feature/fix.
