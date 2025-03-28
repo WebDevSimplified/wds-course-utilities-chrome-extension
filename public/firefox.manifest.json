@@ -1,0 +1,11 @@
+{
+  "background": {
+    "scripts": ["js/background.js"]
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{9a40fd27-1d81-4f6f-a8af-61c8fedb2917}"
+    },
+    "gecko_android": {}
+  }
+}

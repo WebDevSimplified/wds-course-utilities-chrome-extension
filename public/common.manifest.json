@@ -25,9 +25,6 @@
       "all_frames": true
     }
   ],
-  "background": {
-    "service_worker": "js/background.js"
-  },
   "permissions": ["storage"],
   "icons": {
     "16": "logos/logo-16.png",
