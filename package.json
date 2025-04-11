@@ -1,7 +1,7 @@
 {
-  "name": "chrome-extension-typescript-starter",
-  "version": "1.0.0",
-  "description": "chrome-extension-typescript-starter",
+  "name": "wds-course-utilities",
+  "version": "1.1.0",
+  "description": "wds-course-utilities",
   "main": "index.js",
   "scripts": {
     "watch": "webpack --config webpack/webpack.dev.js --watch",

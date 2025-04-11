@@ -3,7 +3,7 @@
 
   "name": "Web Dev Simplified Course Utilities",
   "description": "Utilities for Web Dev Simplified's course website to make the viewing experience better",
-  "version": "1.0",
+  "version": "1.1.0",
   "action": {
     "default_icon": {
       "16": "logos/logo-16.png",
@@ -17,7 +17,8 @@
   "content_scripts": [
     {
       "matches": ["https://courses.webdevsimplified.com/view/courses/*"],
-      "js": ["js/vendor.js", "js/content_script.js"]
+      "js": ["js/vendor.js", "js/content_script.js"],
+      "css": ["css/content_script.css"]
     },
     {
       "matches": ["https://customer-010kwcw7rkskh8op.cloudflarestream.com/*"],

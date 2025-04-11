@@ -15,7 +15,11 @@ async function main() {
   listenForChanges(storedPreferences, video)
 
   const options = await getOptions()
-  if (options.autoplay) video.play()
+  if (options.autoplay) {
+    video.play().catch(() => {
+      // Ignore since a video cannot autoplay if the user has not interacted with the page
+    })
+  }
 
   video.addEventListener("ended", () => {
     chrome.runtime.sendMessage({ type: "video-ended", to: "content" })

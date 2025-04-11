@@ -1,0 +1,11 @@
+/* The toast container is full width which blocks buttons. This forces it to be as small as possible */
+#toasts-container {
+  width: fit-content;
+  margin: 0 auto;
+  bottom: 1.25rem;
+  max-width: calc(100vh - 1.5rem);
+}
+
+#toasts-container .toast {
+  margin-inline: 0 !important;
+}

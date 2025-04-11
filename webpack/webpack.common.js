@@ -86,6 +86,11 @@ module.exports = env => {
               ignore: ["**/*.manifest.json"],
             },
           },
+          {
+            from: "src/entries/*.css",
+            to: "../css/[name][ext]",
+            noErrorOnMissing: true,
+          },
         ],
       }),
     ],
