@@ -4,7 +4,10 @@
   },
   "browser_specific_settings": {
     "gecko": {
-      "id": "{9a40fd27-1d81-4f6f-a8af-61c8fedb2917}"
+      "id": "{9a40fd27-1d81-4f6f-a8af-61c8fedb2917}",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
     },
     "gecko_android": {}
   }
