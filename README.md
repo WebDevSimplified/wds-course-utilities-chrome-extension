@@ -20,6 +20,10 @@ Unfortunately, video quality settings are not saved by this extension as Cloudfl
 
 If you click on the extension in your toolbar you can enable the autoplay feature. This will automatically play the next video in the course when the current video ends. You can also change the delay between the current video ending and the next video starting to any value between 0 and 10 seconds.
 
+### Seeking Behavior Fix
+
+A small quality of life feature is that when you seek within a video it will now respect your play/pause state. Without this extension the video will automatically start playing after seeking to a new location (even if you had the video paused before), but now the video will play/pause based on the play/pause state before you started seeking.
+
 ## Get The Extension
 
 The following links can be used to download the extension for your browser.
