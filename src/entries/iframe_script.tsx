@@ -28,7 +28,7 @@ async function main() {
 
 function setDefaultValues(
   storedPreferences: VideoPreferences,
-  video: HTMLVideoElement
+  video: HTMLVideoElement,
 ) {
   if (storedPreferences.playbackRate != null) {
     video.playbackRate = storedPreferences.playbackRate
@@ -55,7 +55,7 @@ function setDefaultValues(
 
 async function listenForChanges(
   storedPreferences: VideoPreferences,
-  video: HTMLVideoElement
+  video: HTMLVideoElement,
 ) {
   let rateChangeTimeout: NodeJS.Timeout
   video.addEventListener("ratechange", async () => {
@@ -88,6 +88,8 @@ async function listenForChanges(
       storeVideoPreferences(storedPreferences)
     }, 100)
   })
+
+  handleSeekingPlayPauseState(video)
 
   try {
     const captionsButton = await getCaptionsButton()
@@ -135,6 +137,38 @@ function getCaptionsButton(): Promise<HTMLButtonElement> {
         return
       }
     }, 1000)
+  })
+}
+
+function handleSeekingPlayPauseState(video: HTMLVideoElement) {
+  // The video player automatically starts playing after seeking (even if the video was paused before)
+  // It also automatically pauses the video when seeking starts so this code keeps track of anytime the playing state is changed (not during a seek operation) and then reapplies that state after seeking is done
+  let isSeeking = false
+  let isPaused = video.paused
+  document.body.addEventListener("mousedown", e => {
+    const target = e.target
+    if (target == null || !(target instanceof Element)) return
+    if (!target.matches("div[role='slider']")) return
+    isSeeking = true
+  })
+
+  video.addEventListener("seeking", () => {
+    isSeeking = false
+    if (isPaused) {
+      video.pause()
+    } else {
+      video.play()
+    }
+  })
+
+  video.addEventListener("play", () => {
+    if (isSeeking) return
+    isPaused = video.paused
+  })
+
+  video.addEventListener("pause", () => {
+    if (isSeeking) return
+    isPaused = video.paused
   })
 }
 

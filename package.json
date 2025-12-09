@@ -1,11 +1,11 @@
 {
   "name": "wds-course-utilities",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "wds-course-utilities",
   "main": "index.js",
   "scripts": {
     "watch": "webpack --config webpack/webpack.dev.js --watch",
-    "watch:firefox": "npm run build:firefox && concurrently --kill-others \"npm run watch -- --env BROWSER=firefox\" \"web-ext run -s dist\"",
+    "watch:firefox": "npm run build:firefox && concurrently --kill-others \"npm run watch -- --env BROWSER=firefox\" \"web-ext run -s dist",
     "build": "webpack --config webpack/webpack.prod.js && web-ext build -s dist -a builds -o -n chrome-{version}.zip",
     "build:firefox": "webpack --config webpack/webpack.prod.js --env BROWSER=firefox && web-ext build -s dist -a builds -o -n firefox-{version}.zip"
   },
