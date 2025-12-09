@@ -3,7 +3,7 @@
 
   "name": "Web Dev Simplified Course Utilities",
   "description": "Utilities for Web Dev Simplified's course website to make the viewing experience better",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "action": {
     "default_icon": {
       "16": "logos/logo-16.png",
